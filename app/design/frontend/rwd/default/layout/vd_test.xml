@@ -1,0 +1,32 @@
+<?xml version="1.0" ?>
+<layout>
+<vdtest_index_index>
+    <reference name="content">
+        <block type="vdtest/test" template="vd_test/index.phtml" />
+    </reference>
+</vdtest_index_index>
+<vdtest_index_view>
+    <reference name="content">
+        <block type="vdtest/test" name="test.content" template="vd_test/view.phtml" />
+    </reference>
+</vdtest_index_view>
+<vdtest_form_index>
+    <reference name="content">
+        <block type="vdtest/form" name="form" template="vd_test/form.phtml" />
+    </reference>
+</vdtest_form_index>
+    <default>
+        <reference name="top.links">
+            <action method="addLink" translate="label title">
+                <label>Testimonials</label>
+                <url>test</url>
+                <title>Testimonials</title>
+                <prepare>true</prepare>
+                <position>2</position>
+            </action>
+        </reference>
+        <reference name="head">
+            <action method="addItem"><type>skin_css</type><file>vd_test/styles.css</file></action>
+        </reference>
+    </default>
+</layout>

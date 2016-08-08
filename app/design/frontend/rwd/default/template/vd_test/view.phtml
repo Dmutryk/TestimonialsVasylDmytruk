@@ -1,0 +1,12 @@
+<?php $sessionCustomer = Mage::getSingleton("customer/session");
+if($sessionCustomer->isLoggedIn()) {
+?>
+<h1><?php echo $testItem->testimonial; ?></h1>
+<div class="content"><?php echo $testItem->name; ?></div>
+    <p class="back-link"><a href="<?php echo $this->getUrl('test'); ?>"><small><<</small>Back</a></p>
+    <?php
+} else {
+    $link=Mage::getUrl('customer/account/login');
+    echo "Please <a href='". $link."'> Log in </a> to write your testimonial!";
+}
+?>

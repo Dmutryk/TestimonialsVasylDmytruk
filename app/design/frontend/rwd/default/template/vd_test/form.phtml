@@ -1,0 +1,45 @@
+<?php if ($this->isCustomerLoggedIn()):?>
+<div class="testimonial-submit">
+	<div class="page-title">
+		<h1><?php echo $this->__('Submit Your Testimonial'); ?></h1>
+	</div>
+	<form action="<?php echo $this->getUrl('*/*/post'); ?>" method="post" id="testimonial-form" enctype="multipart/form-data" >
+		<ul class="form-list">
+
+			<li  class="name">
+				<label for="name" class="required">
+					<?php echo $this->__('Your Name');?>
+					<em>*</em>
+				</label>
+				<div class="input-box">
+					<input name="name" id="name" class="input-text required-entry" type="text" value="<?php echo $this->getCustomer()->getName();?>"  />
+				</div>
+			</li>
+
+
+			<li class="required-std">
+				<label for="testimonial" class="required">
+					<?php echo $this->__('Your Testimonial'); ?>
+					<em>*</em>
+				</label>
+				<div class="std-input-box">
+					<textarea name="testimonial" id="testimonial" type="text" class="required-entry" style="width: 400px; height: 150px"></textarea>
+				</div>
+			</li>
+		</ul>
+		<div class="buttons-set">
+			<p class="required"><?php echo $this->__('* Required Fields'); ?></p>
+			<button type="submit" title="<?php echo $this->__('Submit'); ?>" class="button"><span><span><?php echo $this->__('Submit Testimonial'); ?></span></span></button>
+			<p class="back-link"><a href="<?php echo $this->getUrl('test'); ?>"><small><<</small>Back</a></p>
+		</div>
+	</form>
+	<script type="text/javascript">
+	//<![CDATA[
+		var dataForm = new VarienForm('testimonial-form', true);
+	//]]>
+	</script>
+</div>
+<?php else:
+	$link=Mage::getUrl('customer/account/login');
+	echo "Please <a href='". $link."'> Log in </a> to write your testimonial!";
+endif ?>

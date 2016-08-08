@@ -1,0 +1,8 @@
+.testimonial_box{
+    border:1px double #333333;
+    margin:2px;
+    padding:3px;
+}
+.testimonial{
+    border-bottom:1px dotted #333333;
+}

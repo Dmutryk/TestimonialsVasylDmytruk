@@ -1,0 +1,38 @@
+<?php
+$testimonials = $this->getTestCollection();
+
+$testViewUrl = Mage::getUrl('test/index/view');
+?>
+<h1>Testimonials</h1>
+
+    <?php
+    $sessionCustomer = Mage::getSingleton("customer/session");
+    if($sessionCustomer->isLoggedIn()) {?>
+        <a class="button" href="<?php echo $this->getUrl('test/form'); ?>">Submit Your Testimonial</a><br/>
+        <?php
+
+    } else {
+        $link=Mage::getUrl('customer/account/login');
+        echo "Please <a href='". $link."'> Log in </a> to write your testimonial!";
+    }
+if ($testimonials->getSize()):
+    foreach ($testimonials as $item): ?>
+
+
+    <div class="testimonial_box">
+        <div class="testimonial">
+            <a href="<?php echo $testViewUrl; ?>?id=<?php echo $item->getId(); ?>">  <?php echo $item->testimonial;?>  </a>
+        </div>
+        <div>
+            <span><?php echo $item->name; ?> | </span>
+					<span>
+						<?php echo date('F d, Y', Mage::getModel('core/date')->gmtTimestamp($item->created_time)); ?>
+					</span>
+        </div>
+    </div>
+    <?php endforeach;
+else: ?>
+     <p class="note-msg"><?php echo $this->__('There is no testimonial submitted.'); ?></p>
+ <?php endif;
+   echo $this->getPagerHtml();
+?>
