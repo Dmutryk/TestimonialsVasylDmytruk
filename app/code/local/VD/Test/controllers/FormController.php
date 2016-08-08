@@ -6,10 +6,6 @@ class VD_Test_FormController extends Mage_Core_Controller_Front_Action {
 		$this->loadLayout();
 		$this->renderLayout();
 	}
-	
-//	public function _getSession() {
-//		return Mage::getSingleton('test/session');
-//	}
 
 	public function save() {
         $testimonialTable = Mage::getModel('vdtest/test');
